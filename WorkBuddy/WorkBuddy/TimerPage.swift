@@ -5,9 +5,6 @@ struct TimerPage: View {
     @State private var selectedHour = 0
     @State private var selectedMin = 0
     
-    var hours = [0, 1, 2]
-    var minutes = [0, 1, 2]
-    
     
     
     
@@ -18,8 +15,8 @@ struct TimerPage: View {
         VStack {
 
             Picker("Hours", selection: $selectedHour) {
-                ForEach(hours, id: \.self) {
-                    Text($0)
+                ForEach(0 ..< 24) {
+                    Text("\($0) hours")
                 }
             }
             
