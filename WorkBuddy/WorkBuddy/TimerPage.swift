@@ -5,28 +5,49 @@ struct TimerPage: View {
     @State private var selectedHour = 0
     @State private var selectedMin = 0
     
-    
-    
+    @State private var showSettings = true
+    @State private var showTimer = false
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
-        
-        VStack {
-
-            Picker("Hours", selection: $selectedHour) {
-                ForEach(0 ..< 24) {
-                    Text("\($0) hours")
-                }
-            }
-            
-            Text("\(timeRemaining)")
-                .onReceive(timer) { _ in
-                    if timeRemaining > 0 {
-                        timeRemaining -= 1
+        HStack {
+            if showSettings {
+                Picker("Hours", selection: $selectedHour) {
+                    ForEach(0..<24) {
+                        Text("\($0) hours")
                     }
                 }
-            Text("Timer!")
+                
+                Picker("Min", selection: $selectedMin) {
+                    ForEach(0..<60) {
+                        Text("\($0) min")
+                    }
+                }
+            }
+        }
+        
+        HStack {
+            Button("Start") {
+                showSettings = false
+                showTimer = true
+            }
+            Button("Stop") {
+                showSettings = true
+                showTimer = false
+            }
+        }
+        
+        VStack {
+            if showTimer {
+                Text("\(selectedMin)")
+                    .onReceive(timer) { _ in
+                        if selectedMin > 0 {
+                            selectedMin -= 1
+                        }
+                    }
+                Text("Timer!")
+            }
         }
     }
 }
