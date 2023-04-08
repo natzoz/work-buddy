@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  WorkBuddy
-//
-//  Created by cs-488-01 on 4/8/23.
-//
-
 import SwiftUI
 
 struct ContentView: View {

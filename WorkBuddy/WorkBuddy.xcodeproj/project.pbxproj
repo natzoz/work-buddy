@@ -14,6 +14,7 @@
 		D495FD9F29E1D7F5001B9A3E /* WorkBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D495FD9E29E1D7F5001B9A3E /* WorkBuddyTests.swift */; };
 		D495FDA929E1D7F5001B9A3E /* WorkBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D495FDA829E1D7F5001B9A3E /* WorkBuddyUITests.swift */; };
 		D495FDAB29E1D7F5001B9A3E /* WorkBuddyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D495FDAA29E1D7F5001B9A3E /* WorkBuddyUITestsLaunchTests.swift */; };
+		D49D60AB29E1D954007A7284 /* TimerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D60AA29E1D954007A7284 /* TimerPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		D495FDA429E1D7F5001B9A3E /* WorkBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D495FDA829E1D7F5001B9A3E /* WorkBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkBuddyUITests.swift; sourceTree = "<group>"; };
 		D495FDAA29E1D7F5001B9A3E /* WorkBuddyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkBuddyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D49D60AA29E1D954007A7284 /* TimerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				D495FD9029E1D7F4001B9A3E /* Assets.xcassets */,
 				D495FD9229E1D7F4001B9A3E /* WorkBuddy.entitlements */,
 				D495FD9329E1D7F4001B9A3E /* Preview Content */,
+				D49D60AA29E1D954007A7284 /* TimerPage.swift */,
 			);
 			path = WorkBuddy;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D495FD8F29E1D7F4001B9A3E /* ContentView.swift in Sources */,
+				D49D60AB29E1D954007A7284 /* TimerPage.swift in Sources */,
 				D495FD8D29E1D7F4001B9A3E /* WorkBuddyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
