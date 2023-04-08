@@ -4,7 +4,7 @@ import SwiftUI
 struct WorkBuddyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TimerPage()
         }
     }
 }
