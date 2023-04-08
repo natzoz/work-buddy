@@ -13,26 +13,30 @@ struct TaskPage: View {
             if Timer {
                 VStack{
                     //TimerPage()
-                    Button("Timer"){
-                        Timer.toggle()
-                        Task.toggle()
-                    }.buttonStyle(.bordered)
-                }
+                    HStack{
+                        Button("Timer"){}.buttonStyle(.bordered).bold()
+                        Button("Task"){
+                            Timer.toggle()
+                            Task.toggle()
+                        }.buttonStyle(.bordered)
+                    }
+                    }
             }else if Task{
                 VStack{
                     VStack{
                         List{
                             //ForEach(Taskcell){ task in Taskcell()
-                              Taskcell(task: "do code for this")
-                            }
+                            Taskcell(task: "do code for this")
                         }
                     }
-                HStack{
-                    Button("Task"){}.buttonStyle(.bordered).bold()
-                    Button("Timer"){
-                        Timer.toggle()
-                        Task.toggle()
-                    }.buttonStyle(.bordered)
+                    
+                    HStack{
+                        Button("Task"){}.buttonStyle(.bordered).bold()
+                        Button("Timer"){
+                            Timer.toggle()
+                            Task.toggle()
+                        }.buttonStyle(.bordered)
+                    }
                 }
             }
             }
