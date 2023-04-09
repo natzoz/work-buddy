@@ -1,10 +1,3 @@
-//
-//  listViewModel.swift
-//  WorkBuddy
-//
-//  Created by cs-488-01 on 4/9/23.
-//
-
 import Foundation
 import SwiftUI
 
