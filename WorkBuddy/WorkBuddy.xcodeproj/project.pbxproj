@@ -15,6 +15,7 @@
 		D495FD9F29E1D7F5001B9A3E /* WorkBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D495FD9E29E1D7F5001B9A3E /* WorkBuddyTests.swift */; };
 		D495FDA929E1D7F5001B9A3E /* WorkBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D495FDA829E1D7F5001B9A3E /* WorkBuddyUITests.swift */; };
 		D495FDAB29E1D7F5001B9A3E /* WorkBuddyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D495FDAA29E1D7F5001B9A3E /* WorkBuddyUITestsLaunchTests.swift */; };
+		D4CFB87E29E3518200DFD4E7 /* listViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CFB87D29E3518200DFD4E7 /* listViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		D495FDA429E1D7F5001B9A3E /* WorkBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D495FDA829E1D7F5001B9A3E /* WorkBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkBuddyUITests.swift; sourceTree = "<group>"; };
 		D495FDAA29E1D7F5001B9A3E /* WorkBuddyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkBuddyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D4CFB87D29E3518200DFD4E7 /* listViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				D495FD9229E1D7F4001B9A3E /* WorkBuddy.entitlements */,
 				D495FD9329E1D7F4001B9A3E /* Preview Content */,
 				D42BA02529E1D97E007AFDE9 /* HomePage.swift */,
+				D4CFB87D29E3518200DFD4E7 /* listViewModel.swift */,
 			);
 			path = WorkBuddy;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			files = (
 				D495FD8F29E1D7F4001B9A3E /* ContentView.swift in Sources */,
 				D42BA02629E1D97E007AFDE9 /* HomePage.swift in Sources */,
+				D4CFB87E29E3518200DFD4E7 /* listViewModel.swift in Sources */,
 				D495FD8D29E1D7F4001B9A3E /* WorkBuddyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

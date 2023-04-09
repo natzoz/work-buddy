@@ -23,41 +23,121 @@ struct TaskPage: View {
                     }
             }else if Task{
                 VStack{
-                    VStack{
-                        List{
-                            //ForEach(Taskcell){ task in Taskcell()
-                            Taskcell(task: "do code for this")
-                        }
-                    }
-                    
+                    Spacer()
+                    listView()
                     HStack{
-                        Button("Task"){}.buttonStyle(.bordered).bold()
                         Button("Timer"){
                             Timer.toggle()
                             Task.toggle()
                         }.buttonStyle(.bordered)
+                        Button("Task"){}.buttonStyle(.bordered).bold()
                     }
                 }
             }
             }
         
-        
     }
 
+struct listView: View{
 
-struct Taskcell: View{
-    var task: String
+    @EnvironmentObject var listViewModel: ListViewModel
+
     var body: some View{
-        Text(task)
-        VStack{
-            Text("hello")
+        List{
+            ForEach(listViewModel.items) { item in
+                ListRowView(item: item)
+                    .onTapGesture {
+                        withAnimation(.linear){
+                            listViewModel.updateItem(item: item)
+                        }
+                    }
+            }
+            .onDelete(perform: listViewModel.deleteItem)
+            .onMove(perform: listViewModel.moveItem)
+        }.listStyle(PlainListStyle())
+            .navigationTitle("Task")
+            .navigationBarItems(
+                leading: EditButton(),
+                trailing: NavigationLink("Add", destination: AddView())
+            )
+    }
+    
+}
+
+struct ListRowView: View{
+    let item: Tasks
+    
+    var body: some View{
+        HStack{
+            Image(systemName: item.isCompleted ? "checkmark.circle" : "circle")
+                .foregroundColor(item.isCompleted ? .green : .red)
+            Text(item.title)
+            Spacer()
         }
+        .font(.title2)
+        .padding(.vertical,8)
+    }
+
+}
+
+struct AddView: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var listViewModel: ListViewModel
+    @State var textFieldText: String = ""
+    @State var alertTitle: String = ""
+    @State var showAlert: Bool = false
+    var body: some View{
+        ScrollView{
+            VStack{
+                TextField("Type Task here...", text: $textFieldText)
+                    .padding(.horizontal)
+                    .frame(height: 55)
+                    .background(Color(.lightGray))
+                    .cornerRadius(10)
+                Button(action: saveButtonPressed, label: {
+                    Text("Save".uppercased()).foregroundColor(.white).font(.headline).frame(height:55).frame(maxWidth: .infinity).background(Color.accentColor).cornerRadius(10)
+                })
+            }
+        }.padding(14)
+        .navigationTitle("Add an task")
+        .alert(isPresented: $showAlert, content: getAlert)
+    }
+    
+    func saveButtonPressed(){
+        if textIsAppropriate(){
+            listViewModel.addItem(title: textFieldText)
+            presentationMode.wrappedValue.dismiss()
+        }
+    }
+    
+    func textIsAppropriate() -> Bool{
+        if textFieldText.count < 3{
+            alertTitle = "your new task must be 3 characters long!!"
+            showAlert.toggle()
+            return false
+        }
+        return true
+    }
+    
+    func getAlert() -> Alert{
+        return Alert(title: Text(alertTitle))
     }
 }
 
 
-struct TaskPage_Previews: PreviewProvider{
-    static var previews: some View{
-        TaskPage()
+struct Tasks: Identifiable{
+    let id: String
+    let title: String
+    let isCompleted: Bool
+    
+    init(id: String = UUID().uuidString, title: String, isCompleted: Bool){
+        self.id = id
+        self.title = title
+        self.isCompleted = isCompleted
+    }
+    
+    func updatecompleted() -> Tasks{
+        return Tasks(id: id, title: title, isCompleted: !isCompleted)
     }
 }
