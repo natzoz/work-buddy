@@ -77,7 +77,7 @@ struct TimerPage: View {
             HStack {
                 Spacer()
                 if showSettings {
-                    Button("Start") {
+                    Button("Start Working!") {
                         if hour == 0 && min == 0 && sec == 0 {
                         } else {
                             showSettings = false
@@ -86,7 +86,7 @@ struct TimerPage: View {
                     }
                 } else {
                     if isPaused {
-                        Button("Start Working!") {
+                        Button("Start") {
                             isPaused.toggle()
                             startTimers()
                         }
