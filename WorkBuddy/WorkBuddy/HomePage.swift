@@ -1,9 +1,3 @@
-//
-//  HomePage.swift
-//  WorkBuddy
-//
-//  Created by cs-488-01 on 4/8/23.
-//
 import SwiftUI
 
 struct TaskPage: View {
@@ -12,7 +6,7 @@ struct TaskPage: View {
     var body: some View{
             if Timer {
                 VStack{
-                    //TimerPage()
+                    TimerPage()
                     HStack{
                         Button("Timer"){}.buttonStyle(.bordered).bold()
                         Button("Task"){
