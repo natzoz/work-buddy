@@ -57,18 +57,18 @@ struct TimerPage: View {
                             }
                         }
                     
-                    Text(" : ")
-                    
-                    Text("\(sec)")
-                        .onReceive(secTimer) { _ in
-                            if sec > 0 {
-                                sec -= 1
-                            } else if hour == 0 && min == 0 && sec == 0 {
-                                stopTimers()
-                            } else if sec == 0 && min > 0{
-                                sec = 59
-                            }
-                        }
+//                    Text(" : ")
+//
+//                    Text("\(sec)")
+//                        .onReceive(secTimer) { _ in
+//                            if sec > 0 {
+//                                sec -= 1
+//                            } else if hour == 0 && min == 0 && sec == 0 {
+//                                stopTimers()
+//                            } else if sec == 0 && min > 0{
+//                                sec = 59
+//                            }
+//                        }
                 }
             }
         }
