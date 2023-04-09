@@ -9,11 +9,12 @@ struct TaskPage: View {
                     TimerPage()
                     HStack{
                         Button("Timer"){}.buttonStyle(.bordered).bold()
-                        Button("Task"){
+                        Button("Tasks"){
                             Timer.toggle()
                             Task.toggle()
                         }.buttonStyle(.bordered)
                     }
+                    .padding(.top, 7)
                     }
             }else if Task{
                 VStack{
@@ -24,7 +25,7 @@ struct TaskPage: View {
                             Timer.toggle()
                             Task.toggle()
                         }.buttonStyle(.bordered)
-                        Button("Task"){}.buttonStyle(.bordered).bold()
+                        Button("Tasks"){}.buttonStyle(.bordered).bold()
                     }
                 }
             }
@@ -49,14 +50,16 @@ struct listView: View{
             .onDelete(perform: listViewModel.deleteItem)
             .onMove(perform: listViewModel.moveItem)
         }.listStyle(PlainListStyle())
-            .navigationTitle("Task")
+            .navigationTitle("Tasks")
             .navigationBarItems(
                 leading: EditButton(),
                 trailing: NavigationLink("Add", destination: AddView())
             )
+            .background(CustomColor.myColor)
     }
     
 }
+
 
 struct ListRowView: View{
     let item: Tasks
@@ -94,7 +97,7 @@ struct AddView: View {
                 })
             }
         }.padding(14)
-        .navigationTitle("Add an task")
+        .navigationTitle("Add a task")
         .alert(isPresented: $showAlert, content: getAlert)
     }
     
