@@ -4,6 +4,7 @@ struct TimerPage: View {
     @State private var hour = 0
     @State private var min = 0
     @State private var sec = 0
+    @State private var colon = ":"
         
     @State private var showSettings = true
     @State private var showTimer = false
@@ -14,9 +15,13 @@ struct TimerPage: View {
     @State var secTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
         
     var body: some View {
+        ZStack {
+            Color(red: 250, green: 243, blue: 221)
+        }
         Text("Work Buddy").font(.system(size: 35, design: .rounded))
             .padding(.top, 20)
         Spacer()
+        
         VStack {
             HStack {
                 Spacer()
@@ -40,35 +45,27 @@ struct TimerPage: View {
             }
             HStack {
                 if showTimer {
-                                        
                     Text("\(hour)")
                         .onReceive(hourTimer) { _ in
                             if hour > 0 {
                                 hour -= 1
                             }
                         }
-                    
-                    Text(" : ")
-                    
+                    Text(colon)
+                        .onReceive(secTimer) { _ in
+                            sec += 1
+                            if (sec % 2) == 0 {
+                                colon = ""
+                            } else {
+                                colon = ":"
+                            }
+                        }
                     Text("\(min)")
                         .onReceive(minTimer) { _ in
                             if min > 0 {
                                 min -= 1
                             }
                         }
-                    
-//                    Text(" : ")
-//
-//                    Text("\(sec)")
-//                        .onReceive(secTimer) { _ in
-//                            if sec > 0 {
-//                                sec -= 1
-//                            } else if hour == 0 && min == 0 && sec == 0 {
-//                                stopTimers()
-//                            } else if sec == 0 && min > 0{
-//                                sec = 59
-//                            }
-//                        }
                 }
             }
         }
