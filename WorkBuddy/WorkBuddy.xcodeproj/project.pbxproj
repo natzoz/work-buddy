@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D495FD8D29E1D7F4001B9A3E /* WorkBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D495FD8C29E1D7F4001B9A3E /* WorkBuddyApp.swift */; };
-		D495FD8F29E1D7F4001B9A3E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D495FD8E29E1D7F4001B9A3E /* ContentView.swift */; };
 		D495FD9129E1D7F4001B9A3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D495FD9029E1D7F4001B9A3E /* Assets.xcassets */; };
 		D495FD9529E1D7F4001B9A3E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D495FD9429E1D7F4001B9A3E /* Preview Assets.xcassets */; };
 		D495FD9F29E1D7F5001B9A3E /* WorkBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D495FD9E29E1D7F5001B9A3E /* WorkBuddyTests.swift */; };
@@ -37,7 +36,6 @@
 /* Begin PBXFileReference section */
 		D495FD8929E1D7F4001B9A3E /* WorkBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D495FD8C29E1D7F4001B9A3E /* WorkBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkBuddyApp.swift; sourceTree = "<group>"; };
-		D495FD8E29E1D7F4001B9A3E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D495FD9029E1D7F4001B9A3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D495FD9229E1D7F4001B9A3E /* WorkBuddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkBuddy.entitlements; sourceTree = "<group>"; };
 		D495FD9429E1D7F4001B9A3E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -98,7 +96,6 @@
 			isa = PBXGroup;
 			children = (
 				D495FD8C29E1D7F4001B9A3E /* WorkBuddyApp.swift */,
-				D495FD8E29E1D7F4001B9A3E /* ContentView.swift */,
 				D495FD9029E1D7F4001B9A3E /* Assets.xcassets */,
 				D495FD9229E1D7F4001B9A3E /* WorkBuddy.entitlements */,
 				D495FD9329E1D7F4001B9A3E /* Preview Content */,
@@ -262,7 +259,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D495FD8F29E1D7F4001B9A3E /* ContentView.swift in Sources */,
 				D49D60AB29E1D954007A7284 /* TimerPage.swift in Sources */,
 				D495FD8D29E1D7F4001B9A3E /* WorkBuddyApp.swift in Sources */,
 			);
