@@ -86,7 +86,7 @@ struct TimerPage: View {
                     }
                 } else {
                     if isPaused {
-                        Button("Start") {
+                        Button("Start Working!") {
                             isPaused.toggle()
                             startTimers()
                         }
