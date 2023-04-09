@@ -1,17 +1,18 @@
 import SwiftUI
 
 struct TimerPage: View {
-    @State private var selectedHour = 0
-    @State private var selectedMin = 0
-    @State private var sec = 60
-    
+    @State private var hour = 0
+    @State private var min = 0
+    @State private var sec = 0
+        
     @State private var showSettings = true
     @State private var showTimer = false
+    @State private var isPaused = false
     
-    let hourTimer = Timer.publish(every: 3600, on: .main, in: .common).autoconnect()
-    let minTimer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
-    let secTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
+    @State var hourTimer = Timer.publish(every: 3600, on: .main, in: .common).autoconnect()
+    @State var minTimer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
+    @State var secTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+        
     var body: some View {
         Text("Work Buddy").font(.system(size: 35, design: .rounded))
             .padding(.top, 20)
@@ -20,14 +21,14 @@ struct TimerPage: View {
             HStack {
                 Spacer()
                 if showSettings {
-                    Picker("Hour", selection: $selectedHour) {
+                    Picker("Hour", selection: $hour) {
                         ForEach(0..<24) {
                             Text("\($0)")
                         }
                     }
                     .pickerStyle(.wheel)
                     Text("hours")
-                    Picker("Min", selection: $selectedMin) {
+                    Picker("Min", selection: $min) {
                         ForEach(0..<60) {
                             Text("\($0)")
                         }
@@ -39,26 +40,33 @@ struct TimerPage: View {
             }
             HStack {
                 if showTimer {
-                    Text("\(selectedHour)")
+                                        
+                    Text("\(hour)")
                         .onReceive(hourTimer) { _ in
-                            if selectedHour > 0 {
-                                selectedHour -= 1
+                            if hour > 0 {
+                                hour -= 1
                             }
                         }
+                    
                     Text(" : ")
-                    Text("\(selectedMin)")
+                    
+                    Text("\(min)")
                         .onReceive(minTimer) { _ in
-                            if selectedMin > 0 {
-                                selectedMin -= 1
+                            if min > 0 {
+                                min -= 1
                             }
                         }
+                    
                     Text(" : ")
+                    
                     Text("\(sec)")
                         .onReceive(secTimer) { _ in
                             if sec > 0 {
                                 sec -= 1
-                            } else if sec == 0 {
-                                sec = 60
+                            } else if hour == 0 && min == 0 && sec == 0 {
+                                stopTimers()
+                            } else if sec == 0 && min > 0{
+                                sec = 59
                             }
                         }
                 }
@@ -67,18 +75,48 @@ struct TimerPage: View {
         Spacer()
         HStack {
             Spacer()
-            Button("Start") {
-                showSettings = false
-                showTimer = true
+            if showSettings {
+                Button("Start") {
+                    if hour == 0 && min == 0 && sec == 0 {
+                    } else {
+                        showSettings = false
+                        showTimer = true
+                    }
+                }
+            } else {
+                if isPaused {
+                    Button("Start") {
+                        isPaused.toggle()
+                        startTimers()
+                    }
+                } else {
+                    Button("Pause") {
+                        isPaused.toggle()
+                        stopTimers()
+                    }
+                }
+                Button("Reset") {
+                    showSettings = true
+                    showTimer = false
+                    (hour, min, sec) = (0, 0, 0)
+                }
             }
-            Spacer()
-            Button("Reset") {
-                showSettings = true
-                showTimer = false
-            }
+            
             Spacer()
         }
         Spacer()
+    }
+    
+    func stopTimers() {
+        self.hourTimer.upstream.connect().cancel()
+        self.minTimer.upstream.connect().cancel()
+        self.secTimer.upstream.connect().cancel()
+    }
+    
+    func startTimers() {
+        self.hourTimer = Timer.publish(every: 3600, on: .main, in: .common).autoconnect()
+        self.minTimer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
+        self.secTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     }
 }
 
